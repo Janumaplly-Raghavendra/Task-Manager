@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="notification"></div>
+
+    <div class="app">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <h1>Task Manager</h1>
+                    <p>Manage your tasks easily</p>
+                </div>
+
+            </div>
+
+            <button id="darkModeBtn">
+                🌙 Dark Mode
+            </button>
+
+        </header>
+
+
+        <!-- LOGIN / REGISTER -->
+
+        <section id="authSection">
+
+            <div class="auth-box">
+
+                <h2>Welcome</h2>
+
+                <p>Login to manage your tasks</p>
+
+                <div class="auth-tabs">
+
+                    <button id="loginTab" class="active">
+                        Login
+                    </button>
+
+                    <button id="registerTab">
+                        Register
+                    </button>
+
+                </div>
+
+                <div id="nameField" style="display:none;">
+                    <input type="text" id="nameInput" placeholder="Name">
+                </div>
+
+                <input type="email" id="emailInput" placeholder="Email">
+
+                <input type="password" id="passwordInput" placeholder="Password">
+                <a href="#" id="forgotPasswordLink">
+                    Forgot Password?
+                </a>
+
+                <button id="loginBtn">
+                    Login
+                </button>
+
+                <button id="registerBtn" style="display:none;">
+                    Create Account
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TASK DASHBOARD -->
+
+        <section id="taskSection" style="display:none;">
+
+            <div class="dashboard">
+
+                <!-- SIDEBAR -->
+
+                <aside class="sidebar">
+
+                    <input type="text" id="searchInput" placeholder="🔍 Search tasks...">
+
+                    <select id="filterSelect">
+
+                        <option value="all">
+                            All Tasks
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                    </select>
+
+
+                    <!-- STATISTICS -->
+
+                    <div class="side-card">
+
+                        <div class="stat-row">
+
+                            <span>📋 Total Tasks</span>
+
+                            <strong id="totalTasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="stat-row">
+
+                            <span>✅ Completed</span>
+
+                            <strong id="completedTasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="stat-row">
+
+                            <span>⏰ Pending</span>
+
+                            <strong id="pendingTasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CATEGORIES -->
+
+                    <div class="side-card">
+
+                        <h3>Categories</h3>
+
+                        <div class="side-item">
+                            <span>
+                                🔵 Work
+                            </span>
+
+                            <strong id="workCount">
+                                0
+                            </strong>
+                        </div>
+
+                        <div class="side-item">
+                            <span>
+                                🟣 Personal
+                            </span>
+
+                            <strong id="personalCount">
+                                0
+                            </strong>
+                        </div>
+
+                        <div class="side-item">
+                            <span>
+                                🟠 Study
+                            </span>
+
+                            <strong id="studyCount">
+                                0
+                            </strong>
+                        </div>
+
+                        <div class="side-item">
+                            <span>
+                                ⚪ Other
+                            </span>
+
+                            <strong id="otherCount">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRIORITIES -->
+
+                    <div class="side-card">
+
+                        <h3>Priorities</h3>
+
+                        <div class="side-item">
+                            <span>
+                                🔴 High
+                            </span>
+
+                            <strong id="highCount">
+                                0
+                            </strong>
+                        </div>
+
+                        <div class="side-item">
+                            <span>
+                                🟡 Medium
+                            </span>
+
+                            <strong id="mediumCount">
+                                0
+                            </strong>
+                        </div>
+
+                        <div class="side-item">
+                            <span>
+                                🟢 Low
+                            </span>
+
+                            <strong id="lowCount">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <button id="sidebarAddTask">
+                        ＋ Add Task
+                    </button>
+
+                    <button id="logoutBtn">
+                        🚪 Logout
+                    </button>
+
+                </aside>
+
+
+                <!-- MAIN CONTENT -->
+
+                <main class="main-content">
+
+
+                    <!-- ADD TASK -->
+
+                    <div class="panel">
+
+                        <div class="panel-title">
+
+                            <span>✏️</span>
+
+                            <h2>Add Task</h2>
+
+                        </div>
+
+                        <div class="task-form">
+
+                            <input type="text" id="taskInput" placeholder="Enter a task...">
+
+                            <input type="date" id="dueDateInput">
+
+                            <select id="priorityInput">
+
+                                <option value="low">
+                                    🟢 Low
+                                </option>
+
+                                <option value="medium" selected>
+                                    🟡 Medium
+                                </option>
+
+                                <option value="high">
+                                    🔴 High
+                                </option>
+
+                            </select>
+
+                            <select id="categoryInput">
+
+                                <option value="work">
+                                    🔵 Work
+                                </option>
+
+                                <option value="personal">
+                                    🟣 Personal
+                                </option>
+
+                                <option value="study">
+                                    🟠 Study
+                                </option>
+
+                                <option value="other" selected>
+                                    ⚪ Other
+                                </option>
+
+                            </select>
+
+                            <button id="addTaskBtn">
+                                Add Task
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK LIST -->
+
+                    <div class="panel tasks-panel">
+
+                        <div class="tasks-header">
+
+                            <div class="panel-title">
+
+                                <span>☷</span>
+
+                                <h2>Your Tasks</h2>
+
+                            </div>
+
+                            <span id="taskCountLabel">
+                                0 tasks
+                            </span>
+
+                        </div>
+
+
+                        <div id="loadingMessage">
+                            Loading tasks...
+                        </div>
+
+
+                        <div id="taskList"></div>
+
+                    </div>
+
+                </main>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
