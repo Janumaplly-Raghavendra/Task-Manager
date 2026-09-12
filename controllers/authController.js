@@ -164,8 +164,12 @@ const forgotPassword = async (req, res) => {
         await user.save();
 
         // Create reset URL
+        const baseUrl =
+            process.env.APP_URL ||
+            `http://localhost:${process.env.PORT || 3000}`;
+
         const resetUrl =
-            `http://localhost:3000/reset-password.html?token=${resetToken}`;
+            `${baseUrl}/reset-password.html?token=${resetToken}`;
 
         // IMPORTANT: print link in terminal
         console.log("");
